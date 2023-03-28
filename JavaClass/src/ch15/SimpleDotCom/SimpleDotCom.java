@@ -1,16 +1,42 @@
 package ch15.SimpleDotCom;
 
+import ch03.BreakExam;
+
+import java.util.ArrayList;
+
 public class SimpleDotCom {
-    private int[] location;
+    private ArrayList<Integer> location;
 
     int numOfHits;
 
-
-    public void setLocation(int[] location) {
+    public void setLocation(ArrayList<Integer> location) {
         this.location = location;
     }
 
     public String checkYourself(String guessStr) {
+        int guess = Integer.parseInt((guessStr));
+        String result = "miss";
+
+        int index = location.indexOf(guess);
+        if(index >= 0){
+            location.remove(index);
+            if(location.isEmpty()){
+                return "kill";
+            }
+            else{
+                result = "hit";
+            }
+        }
+
+        return result;
+    }
+
+
+    /*public void setLocation(int[] location) {
+        this.location = location;
+    }*/
+
+    /*public String checkYourself(String guessStr) {
         int guess = Integer.parseInt(guessStr);
         String result = "miss";
 
@@ -27,5 +53,7 @@ public class SimpleDotCom {
         }
 
         return result;
-    }
+    }*/
+
+
 }
